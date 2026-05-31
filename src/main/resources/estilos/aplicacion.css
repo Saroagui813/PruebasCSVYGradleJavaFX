@@ -1,5 +1,5 @@
 .root {
-	-fx-base: #ffe4c4;
+	-fx-base: #c0f1fc;
 }
 
 .button {
@@ -7,7 +7,7 @@
 }
 
 .label {
-    -fx-text-fill: #7f6aff;
+    -fx-text-fill: #fa553c;
 }
 
 #btSaludar {

@@ -11,7 +11,7 @@ public class Main extends Application {
 	public void start(Stage escenarioPrincipal) {
 		Controlador ventanaPrincipal = Controladores.get("/vistas/VistaPersonas.fxml", "Personas Almacenadas", null);
 		ventanaPrincipal.addHojaEstilos("/estilos/aplicacion.css");
-		ventanaPrincipal.addIcono("/imagenes/iconoSaludar.png");
+		ventanaPrincipal.addIcono("/imagenes/lista.png");
 		ventanaPrincipal.getEscenario().show();
 	}
 
