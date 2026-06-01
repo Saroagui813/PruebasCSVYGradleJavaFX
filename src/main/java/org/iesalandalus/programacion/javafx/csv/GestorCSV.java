@@ -43,4 +43,22 @@ public class GestorCSV {
             System.out.println("Error al escribir fichero de objetos: " + e.getMessage());
         }
     }
+
+    public static List<Persona> leerFicheroObjetos() {
+        List<Persona> personas = new ArrayList<>();
+        try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(FICHERO_OBJETOS))) {
+            while (true) {
+                personas.add((Persona) entrada.readObject());
+            }
+        } catch (EOFException e) {
+            System.out.println("Fichero de objetos leído correctamente.");
+        } catch (FileNotFoundException e) {
+            System.out.printf("No se encuentra el fichero: %s.%n", FICHERO_OBJETOS);
+        } catch (IOException e) {
+            System.out.println("Error de E/S al leer el fichero de objetos.");
+        } catch (ClassNotFoundException e) {
+            System.out.println("No se reconoce la clase del objeto leído.");
+        }
+        return personas;
+    }
 }
