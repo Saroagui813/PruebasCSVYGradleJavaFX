@@ -6,8 +6,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import org.iesalandalus.programacion.javafx.csv.Personaje;
 import org.iesalandalus.programacion.javafx.utilidades.Controlador;
+import org.iesalandalus.programacion.javafx.utilidades.Controladores;
+import org.iesalandalus.programacion.javafx.utilidades.Dialogos;
 
 import java.util.List;
 
@@ -17,6 +20,9 @@ public class ListaPersonaje extends Controlador {
     // son "memoria" interna para recordar el último borrado.
     private Personaje ultimoBorrado;
     private int ultimaPosicion;
+
+    @FXML
+    private Button botonSalir;
 
     @FXML
     private Button botonBorrar;
@@ -63,6 +69,20 @@ public class ListaPersonaje extends Controlador {
         idLabel.setText("Hay " + total + " personajes");
     }
 
+    @FXML
+    void cerrarVentana(ActionEvent event) {
+        Stage padre = getEscenario();
+        if (Dialogos.mostrarDialogoConfirmacion("Salir", "¿Estás seguro de que quieres salir de l aplicación?", padre)) {
+            padre.close();
+        }
+    }
+
+    @FXML
+    void abrirVentana(ActionEvent event) {
+        Controlador ventana = Controladores.get("/vistas/Ventana.fxml", "Nombre Ventana", getEscenario());
+        ventana.getEscenario().show();
+    }
+
     // Recibe la lista de personajes desde el Main y la mete en el ListView.
     // getItems() = los datos de la lista. setItems() = asignar esos datos.
     // FXCollections.observableArrayList(...) convierte la List normal en
@@ -90,5 +110,7 @@ public class ListaPersonaje extends Controlador {
     private void mostrarTexto(Personaje personaje) {
         idLabel.setText("Has seleccionado el personaje: " + personaje.getNombre());
     }
+
+
 
 }
