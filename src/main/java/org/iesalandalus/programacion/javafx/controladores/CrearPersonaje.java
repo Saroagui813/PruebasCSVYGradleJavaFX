@@ -3,7 +3,9 @@ package org.iesalandalus.programacion.javafx.controladores;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.iesalandalus.programacion.javafx.csv.Personaje;
@@ -20,6 +22,15 @@ public class CrearPersonaje extends Controlador {
 
     @FXML
     private TextField campoNombre;
+
+    @FXML
+    private ToggleGroup sexoButtons;
+
+    @FXML
+    private RadioButton idHombre;
+
+    @FXML
+    private RadioButton idMujer;
 
     // Aquí se guardará el personaje creado, para que la ventana
     // principal lo recoja después de cerrarse.
@@ -52,14 +63,23 @@ public class CrearPersonaje extends Controlador {
     void guardarPersonaje(ActionEvent event) {
         String nombre = campoNombre.getText();
         String textoEdad = campoEdad.getText();
+        String sexo;
 
         if (nombre.isBlank() || textoEdad.isBlank()) {
             return;
         }
 
+        if (idHombre.isSelected()) {
+            sexo = "Hombre";
+        } else if (idMujer.isSelected()) {
+            sexo = "Mujer";
+        } else {
+            return;
+        }
+
         try {
             int edad = Integer.parseInt(textoEdad);
-            personaje = new Personaje(nombre, edad);
+            personaje = new Personaje(nombre, edad, sexo);
             getEscenario().close();
         } catch (NumberFormatException e) {
 

@@ -4,10 +4,12 @@ public class Personaje {
 
     private String nombre;
     private int edad;
+    private String sexo;
 
-    public Personaje(String nombre, int edad) {
+    public Personaje(String nombre, int edad, String sexo) {
         this.nombre = nombre;
         this.edad = edad;
+        this.sexo = sexo;
     }
 
     public String getNombre() {
@@ -26,8 +28,16 @@ public class Personaje {
         this.edad = edad;
     }
 
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
     @Override
     public String toString() {
-        return String.format("Personaje (nombre=%s, edad=%s)", nombre, edad);
+        return String.format("Personaje (nombre: %s, edad: %s, sexo: %s)", nombre, edad, sexo);
     }
 }

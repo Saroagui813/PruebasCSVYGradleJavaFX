@@ -18,8 +18,8 @@ public class Main extends Application {
 
 		List<Personaje> personajes = new ArrayList<>();
 
-		personajes.add(new Personaje("Samuel", 20));
-		personajes.add(new Personaje("Lucia", 21));
+		personajes.add(new Personaje("Samuel", 20, "Hombre"));
+		personajes.add(new Personaje("Lucia", 21, "Mujer"));
 
 		ListaPersonaje ventanaPrincipal = (ListaPersonaje) Controladores.get("/vistas/ListaPersonaje.fxml", "Personas Almacenadas", null);
         ventanaPrincipal.getEscenario().setOnCloseRequest(this::salir);
