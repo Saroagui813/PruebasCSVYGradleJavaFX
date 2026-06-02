@@ -51,11 +51,13 @@ public class CrearPersonaje extends Controlador {
     }
 
     private void confirmarCierre(WindowEvent e) {
-        Stage stage = (Stage) e.getSource();
-        if (Dialogos.mostrarDialogoConfirmacion("Cerrar", "¿Seguro que quieres cerrar sin guardar el personaje?", stage)) {
-            stage.close();
-        } else {
-            e.consume();
+        if (!campoNombre.getText().isEmpty() || !campoEdad.getText().isEmpty()) {
+            Stage stage = (Stage) e.getSource();
+            if (Dialogos.mostrarDialogoConfirmacion("Cerrar", "¿Seguro que quieres cerrar sin guardar el personaje?", stage)) {
+                stage.close();
+            } else {
+                e.consume();
+            }
         }
     }
 
