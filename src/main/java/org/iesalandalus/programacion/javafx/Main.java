@@ -36,7 +36,7 @@ public class Main extends Application {
 
     public void salir(WindowEvent e) {
         Stage padre = (Stage) e.getSource();
-        if (Dialogos.mostrarDialogoConfirmacion("Salir", "¿Estás seguro de que quieres salir de l aplicación?", padre)) {
+        if (Dialogos.mostrarDialogoConfirmacion("Salir", "¿Estás seguro de que quieres salir de la aplicación?", padre)) {
             padre.close();
         } else {
             e.consume();

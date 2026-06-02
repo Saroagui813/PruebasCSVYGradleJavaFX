@@ -16,10 +16,14 @@ import java.util.List;
 
 public class ListaPersonaje extends Controlador {
 
+
     // Estos NO llevan @FXML porque no son componentes de la vista,
     // son "memoria" interna para recordar el último borrado.
     private Personaje ultimoBorrado;
     private int ultimaPosicion;
+
+    @FXML
+    public Button botonAbrir;
 
     @FXML
     private Button botonSalir;
@@ -69,18 +73,28 @@ public class ListaPersonaje extends Controlador {
         idLabel.setText("Hay " + total + " personajes");
     }
 
+
+    //Abre la ventana diálogo de confirmación la cual le pasamos esos parámetros.
     @FXML
     void cerrarVentana(ActionEvent event) {
         Stage padre = getEscenario();
-        if (Dialogos.mostrarDialogoConfirmacion("Salir", "¿Estás seguro de que quieres salir de l aplicación?", padre)) {
+        if (Dialogos.mostrarDialogoConfirmacion("Salir", "¿Estás seguro de que quieres salir de la aplicación?", padre)) {
             padre.close();
         }
     }
 
     @FXML
     void abrirVentana(ActionEvent event) {
-        Controlador ventana = Controladores.get("/vistas/Ventana.fxml", "Nombre Ventana", getEscenario());
-        ventana.getEscenario().show();
+        CrearPersonaje ventana = (CrearPersonaje) Controladores.get("/vistas/CrearPersonaje.fxml", "Crear Personaje", getEscenario());
+        ventana.prepararVentana();
+        ventana.getEscenario().showAndWait();
+
+        Personaje nuevo = ventana.getPersonaje();
+
+        if (nuevo != null) {
+            idLista.getItems().add(nuevo);
+            idLabel.setText("Añadiendo: " +  nuevo.getNombre());
+        }
     }
 
     // Recibe la lista de personajes desde el Main y la mete en el ListView.

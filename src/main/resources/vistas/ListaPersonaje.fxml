@@ -31,11 +31,13 @@
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>
       </Label>
-      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="365.0">
         <items>
           <Button fx:id="botonBorrar" mnemonicParsing="false" onAction="#borrarPersonaje" text="Borrar" />
             <Button fx:id="botonContar" mnemonicParsing="false" onAction="#contarPersonajes" text="Contar" />
             <Button fx:id="botonDeshacer" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#deshacerBorrar" text="Deshacer" />
+            <Button fx:id="botonAbrir" mnemonicParsing="false" onAction="#abrirVentana" text="Crear" />
+            <Button fx:id="botonSalir" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cerrarVentana" text="Salir" />
         </items>
       </ToolBar>
    </children>
